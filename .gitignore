@@ -12,3 +12,15 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+
+
+/workspace.xml
+.idea
+*/build
+*/gen
+local.properties
+gradle.properties
+*/obj
+*.iml
+*.trace
+*.lock

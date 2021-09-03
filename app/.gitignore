@@ -1,0 +1,13 @@
+/build
+/shelf/
+/workspace.xml
+.idea
+.gradle
+*/build
+*/gen
+local.properties
+gradle.properties
+*/obj
+*.iml
+*.trace
+*.lock
