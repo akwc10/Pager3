@@ -22,7 +22,7 @@ class RepoPagingSource(
             LoadResult.Page(
                 data = response,
                 prevKey = null, // Only paging forward.
-                nextKey = if (response.isEmpty()) null else params.loadSize + PAGE_SIZE,
+                nextKey = if (response.isEmpty()) null else nextPageNumber + (params.loadSize / PAGE_SIZE),
             )
         } catch (e: Exception) {
             LoadResult.Error(e)
