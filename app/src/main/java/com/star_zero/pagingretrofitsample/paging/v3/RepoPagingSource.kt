@@ -1,6 +1,5 @@
 package com.star_zero.pagingretrofitsample.paging.v3
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.star_zero.pagingretrofitsample.api.GitHubAPI
@@ -35,12 +34,12 @@ class RepoPagingSource(
     ): List<RepoItem> {
         return try {
             withContext(Dispatchers.IO) {
-                api.repos(query, page, PAGE_SIZE).execute()
+                api.repos(query, page, PAGE_SIZE).execute().also { println("@@@ $it") }
             }.body()?.let {
                 it.map { repo -> convertToItem(repo) }
             } ?: emptyList()
         } catch (e: IOException) {
-            Log.w(TAG, e)
+            println("@@@ requestRepos: ${e.localizedMessage}")
             emptyList()
         }
     }
@@ -55,7 +54,6 @@ class RepoPagingSource(
     }
 
     companion object {
-        private const val TAG = "PageKeyedRepoDataSource"
         private const val PAGE_SIZE = 50
     }
 }
